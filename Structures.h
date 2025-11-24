@@ -1,6 +1,6 @@
 #pragma once
-#ifndef STRUCTERS_H
-#define STRUCTERS_H 
+#ifndef STRUCTURES_H
+#define STRUCTURES_H 
 #include <string>
 using namespace std;
 struct StructEmployee {
@@ -40,4 +40,5 @@ struct StructCustomer {
     string status;
     float balance;
 };
+
 #endif
