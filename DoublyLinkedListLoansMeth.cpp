@@ -158,7 +158,7 @@ int getLoan(const ListLoan& L, int pos) {
 	}
 	cout << "Loan ID: " + current->data.LoanID << endl;
 	cout << "Loan type: " + current->data.LoanType << endl;
-	cout << "Principal Amout: " << current->data.principalAmount << endl;
+	cout << "Principal Amount: " << current->data.principalAmount << endl;
 	cout << "Interest Rate: " << current->data.interestRate << endl;
 	cout << "Amount Paid : " << current->data.AmountPaid << endl;
 	cout << "Remaining Balance: " << current->data.remainingBalance << endl;
@@ -202,4 +202,5 @@ bool CompareLoanLists(const ListLoan& L1, const ListLoan& L2) {
 }
 void destroyNodeLoan(NodeLoan* node) {
 	delete node;
+
 }
