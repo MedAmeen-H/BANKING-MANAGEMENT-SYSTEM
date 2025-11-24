@@ -40,7 +40,7 @@ int InsertCustomer(ListCustomers* L, StructCustomer e, int pos) {
 		cerr << "\nInvalid position";
 		return 0;
 	}
-	NodeCustomer* n = createNode(e);
+	NodeCustomer* n = createNodeCustomer(e);
 	if (!n) return 0;
 	if (pos == 1) {
 		n->next = L->head;
@@ -63,7 +63,7 @@ int InsertCustomer(ListCustomers* L, StructCustomer e, int pos) {
 
 
 int removeCustomerAt(ListCustomers* L, int pos) {
-	if (!L || isEmpty(*L)) {
+	if (!L || ListCustomersisEmpty(*L)) {
 		cerr << "\nList is empty";
 		return 0;
 	}
@@ -86,7 +86,7 @@ int removeCustomerAt(ListCustomers* L, int pos) {
 		}
 		prev->next = current->next;
 	}
-	destroyNode(current);
+	destroyNodeCustomer(current);
 	L->size--;
 	return 1;
 }
@@ -95,7 +95,7 @@ int removeCustomerAt(ListCustomers* L, int pos) {
 
 StructCustomer getCustomer(const ListCustomers& L, int pos) {
 	StructCustomer s = {};
-	if (isEmpty(L)) {
+	if (ListCustomersisEmpty(L)) {
 		cerr << "\nListCustomers is empty\n";
 		return s;
 	}
@@ -125,7 +125,7 @@ void destroyListCustomers(ListCustomers* L) {
 	while (current) {
 		NodeCustomer* temp = current;
 		current = current->next;
-		destroyNode(temp);
+		destroyNodeCustomer(temp);
 	}
 	L->head = nullptr;
 	L->size = 0;
@@ -133,7 +133,7 @@ void destroyListCustomers(ListCustomers* L) {
 
 
 void displayListCustomers(const ListCustomers& L) {
-	if (isEmpty(L)) {
+	if (ListCustomersisEmpty(L)) {
 		cout << "List is empty\n";
 		return;
 	}
@@ -153,7 +153,7 @@ ListCustomers CopyListCustomers(const ListCustomers& L) {
 	NodeCustomer* tail = nullptr;
 
 	while (current) {
-		NodeCustomer* n = createNode(current->data);
+		NodeCustomer* n = createNodeCustomer(current->data);
 		if (!n) {
 
 			cerr << "\nMemory allocation failed while copying\n";
