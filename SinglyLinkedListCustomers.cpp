@@ -4,7 +4,7 @@ using namespace std;
 #include <string>
 
 
-NodeCustomer* createNode(StructCustomer value) {
+NodeCustomer* createNodeCustomer(StructCustomer value) {
 	NodeCustomer* node = new (nothrow) NodeCustomer{ value, nullptr };
 	if (!node) {
 		cerr << "\nMemory allocation failed for node\n";
@@ -13,12 +13,12 @@ NodeCustomer* createNode(StructCustomer value) {
 }
 
 
-void destroyNode(NodeCustomer* node) {
+void destroyNodeCustomer(NodeCustomer* node) {
 	delete node;
 }
 
 
-bool isEmpty(const ListCustomers& L) {
+bool ListCustomersisEmpty(const ListCustomers& L) {
 	return L.size == 0;
 }
 
@@ -26,7 +26,7 @@ int ListCustomersSize(const ListCustomers& L) {
 	return L.size;
 }
 
-bool isFull(const ListCustomers& L) {
+bool ListCustomersisFull(const ListCustomers& L) {
 	NodeCustomer* test = new (nothrow) NodeCustomer;
 	if (!test) return true;
 	delete test;
@@ -34,7 +34,7 @@ bool isFull(const ListCustomers& L) {
 }
 
 
-int insert(ListCustomers* L, StructCustomer e, int pos) {
+int InsertCustomer(ListCustomers* L, StructCustomer e, int pos) {
 	if (!L) return 0;
 	if (pos < 1 || pos > L->size + 1) {
 		cerr << "\nInvalid position";
@@ -62,7 +62,7 @@ int insert(ListCustomers* L, StructCustomer e, int pos) {
 }
 
 
-int removeAt(ListCustomers* L, int pos) {
+int removeCustomerAt(ListCustomers* L, int pos) {
 	if (!L || isEmpty(*L)) {
 		cerr << "\nList is empty";
 		return 0;
@@ -93,7 +93,7 @@ int removeAt(ListCustomers* L, int pos) {
 
 
 
-StructCustomer getElement(const ListCustomers& L, int pos) {
+StructCustomer getCustomer(const ListCustomers& L, int pos) {
 	StructCustomer s = {};
 	if (isEmpty(L)) {
 		cerr << "\nListCustomers is empty\n";
@@ -190,3 +190,4 @@ bool CompareListCustomers(const ListCustomers& L1, const ListCustomers& L2) {
 	}
 	return true;
 }
+
