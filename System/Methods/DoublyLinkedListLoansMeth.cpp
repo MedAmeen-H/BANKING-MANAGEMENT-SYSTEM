@@ -155,16 +155,16 @@ int getLoan(const ListLoan& L, int pos) {
 	NodeLoan* current = L.head;
 	for (int i = 1; i < pos; i++) {
 		current = current->next;
+		cout << "Loan ID: " + current->data.LoanID << endl;
+		cout << "Loan type: " + current->data.LoanType << endl;
+		cout << "Principal Amount: " << current->data.principalAmount << endl;
+		cout << "Interest Rate: " << current->data.interestRate << endl;
+		cout << "Amount Paid : " << current->data.AmountPaid << endl;
+		cout << "Remaining Balance: " << current->data.remainingBalance << endl;
+		cout << "Start Date: " + current->data.startDate << endl;
+		cout << "End Date: " + current->data.endDate << endl;
+		cout << "Loan Status: " + current->data.LoanStatus << endl;
 	}
-	cout << "Loan ID: " + current->data.LoanID << endl;
-	cout << "Loan type: " + current->data.LoanType << endl;
-	cout << "Principal Amount: " << current->data.principalAmount << endl;
-	cout << "Interest Rate: " << current->data.interestRate << endl;
-	cout << "Amount Paid : " << current->data.AmountPaid << endl;
-	cout << "Remaining Balance: " << current->data.remainingBalance << endl;
-	cout << "Start Date: " + current->data.startDate << endl;
-	cout << "End Date: " + current->data.endDate << endl;
-	cout << "Loan Status: " + current->data.LoanStatus << endl;
 	return (1);
 }
 void displayListLoan(const ListLoan& L) {
@@ -204,3 +204,4 @@ void destroyNodeLoan(NodeLoan* node) {
 	delete node;
 
 }
+
