@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DOUBLYLINKEDLISTMETH_H
-#define DOUBLYLINKEDLISTMETH_H
+#ifndef DOUBLYLINKEDLISTLOANSMETH_H
+#define DOUBLYLINKEDLISTLOANSMETH_H
 #include "DoublyLinkedListLoans.h"
 NodeLoan* createNodeLoan(StructLoan data);
 void destroyNodeLoan(NodeLoan* node);
@@ -16,3 +16,4 @@ void displayListLoan(const ListLoan& L);
 ListLoan CopyListLoan(const ListLoan& L);
 bool CompareLoanLists(const ListLoan& L1, const ListLoan& L2);
 #endif
+
