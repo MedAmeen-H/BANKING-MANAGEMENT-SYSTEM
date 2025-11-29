@@ -8,7 +8,11 @@ Struct NodeCustomer{
   Customer data;
   NodeCustomer* next;
 }
-Struct ListCustomers
+Struct ListCustomers{
+  NodeCustomer* head;
+  int Size;
+}
 #endif
+
 
 
