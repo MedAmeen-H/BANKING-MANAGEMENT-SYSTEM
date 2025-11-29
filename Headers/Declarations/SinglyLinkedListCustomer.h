@@ -4,6 +4,11 @@
 #include <list>
 #include "StructCustomer.h"
 using namespace std;
-
+Struct NodeCustomer{
+  Customer data;
+  NodeCustomer* next;
+}
+Struct ListCustomers
 #endif
+
 
