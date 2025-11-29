@@ -2,10 +2,10 @@
 #ifndef SINGLYLINKEDLISTALLTRANSACTIONS_H
 #define SINGLYLINKEDLISTALLTRANSACTIONS_H
 #include<iostream>
-#include "structures.h"
+#include "StructTransaction.h"
 using namespace std;
 struct NodeAllTransactions {
-	StructTransaction data;
+	Transaction data;
 	NodeAllTransactions* next;
 };
 
@@ -15,3 +15,4 @@ struct ListAllTransactions {
 };
 
 #endif
+
