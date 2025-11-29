@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SINGLYLINKEDLISTALLTRANSACTIONS_H
-#define SINGLYLINKEDLISTALLTRANSACTIONS_H
+#ifndef STACKALLTRANSACTIONS_H
+#define STACKALLTRANSACTIONS_H
 #include<iostream>
 #include "StructTransaction.h"
 using namespace std;
@@ -9,10 +9,8 @@ struct NodeAllTransactions {
 	NodeAllTransactions* next;
 };
 
-struct ListAllTransactions {
-	NodeAllTransactions* head;
-	int size;
+struct StackAllTransactions {
+	NodeAllTransactions* Top;
 };
 
 #endif
-
