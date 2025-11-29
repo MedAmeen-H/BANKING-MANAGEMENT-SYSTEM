@@ -18,15 +18,15 @@ void destroyNodeAllTransactions(NodeAllTransactions* node) {
 }
 
 
-bool StackAllTransactionsisEmpty(const StackAllTransactions& L) {
-	return L.size == 0;
+bool StackAllTransactionsisEmpty(const StackAllTransactions& Stack) {
+	return Stack.size == 0;
 }
 
-int StackAllTransactionsSize(const StackAllTransactions& L) {
-	return L.size;
+int StackAllTransactionsSize(const StackAllTransactions& Stack) {
+	return Stack.size;
 }
 
-bool StackAllTransactionsisFull(const StackAllTransactions& L) {
+bool StackAllTransactionsisFull(const StackAllTransactions& Stack) {
 	NodeAllTransactions* test = new (nothrow) NodeAllTransactions;
 	if (!test) return true;
 	delete test;
@@ -34,21 +34,21 @@ bool StackAllTransactionsisFull(const StackAllTransactions& L) {
 }
 
 
-int InsertAllTransaction(StackAllTransactions* L, Transaction e, int pos) {
-	if (!L) return 0;
-	if (pos < 1 || pos > L->size + 1) {
+int PushTransaction(StackAllTransactions* Stack, Transaction e, int pos) {
+	if (!Stack) return 0;
+	if (pos < 1 || pos > Stack->size + 1) {
 		cerr << "\nInvalid position";
 		return 0;
 	}
 	NodeAllTransactions* n = createNodeAllTransactions(e);
 	if (!n) return 0;
 	if (pos == 1) {
-		n->next = L->head;
-		L->head = n;
+		n->next = Stack->head;
+		Stack->head = n;
 	}
 	else {
 		NodeAllTransactions* prev = nullptr;
-		NodeAllTransactions* current = L->head;
+		NodeAllTransactions* current = Stack->head;
 		for (int i = 1; i < pos; i++) {
 			prev = current;
 			current = current->next;
@@ -57,24 +57,24 @@ int InsertAllTransaction(StackAllTransactions* L, Transaction e, int pos) {
 		n->next = current;
 	}
 
-	L->size++;
+	Stack->size++;
 	return 1;
 }
 
 
-int removeAllTransactionAt(StackAllTransactions* L, int pos) {
-	if (!L || StackAllTransactionsIsEmpty(*L)) {
+int PopTransactionAt(StackAllTransactions* Stack, int pos) {
+	if (!Stack || StackAllTransactionsIsEmpty(*Stack)) {
 		cerr << "\nStack is empty";
 		return 0;
 	}
-	if (pos < 1 || pos > L->size) {
+	if (pos < 1 || pos > Stack->size) {
 		cerr << "\nInvalid position";
 		return 0;
 	}
 	NodeAllTransactions* prev = nullptr;
-	NodeAllTransactions* current = L->head;
+	NodeAllTransactions* current = Stack->head;
 	if (pos == 1) {
-		L->head = current->next;
+		Stack->head = current->next;
 	}
 	else {
 		for (int i = 1; i < pos; i++) {
@@ -84,22 +84,22 @@ int removeAllTransactionAt(StackAllTransactions* L, int pos) {
 		prev->next = current->next;
 	}
 	destroyNodeAllTransactions(current);
-	L->size--;
+	Stack->size--;
 	return 1;
 }
-Transaction getAllTransaction(const StackAllTransactions& L, int pos) {
+Transaction getAllTransaction(const StackAllTransactions& Stack, int pos) {
 	Transaction s = {};
-	if (StackAllTransactionsIsEmpty(L)) {
+	if (StackAllTransactionsIsEmpty(Stack)) {
 		cerr << "\nStackAllTransactions is empty\n";
 		return s;
 	}
-	if (pos < 1 || pos > L.size) {
+	if (pos < 1 || pos > Stack.size) {
 		cerr << "\nInvalid position\n";
 		return s;
 	}
 
 
-	NodeAllTransactions* current = L.head;
+	NodeAllTransactions* current = Stack.head;
 	for (int i = 1; i < pos; i++) {
 		current = current->next;
 	}
@@ -113,25 +113,25 @@ StackAllTransactions createStackAllTransactions() {
 }
 
 
-void destroyStackAllTransactions(StackAllTransactions* L) {
-	if (!L) return;
-	NodeAllTransactions* current = L->head;
+void destroyStackAllTransactions(StackAllTransactions* Stack) {
+	if (!Stack) return;
+	NodeAllTransactions* current = Stack->head;
 	while (current) {
 		NodeAllTransactions* temp = current;
 		current = current->next;
 		destroyNodeAllTransactions(temp);
 	}
-	L->head = nullptr;
-	L->size = 0;
+	Stack->head = nullptr;
+	Stack->size = 0;
 }
 
 
-void displayStackAllTransactions(const StackAllTransactions& L) {
-	if (StackAllTransactionsIsEmpty(L)) {
+void displayStackAllTransactions(const StackAllTransactions& Stack) {
+	if (StackAllTransactionsIsEmpty(Stack)) {
 		cout << "List is empty\n";
 		return;
 	}
-	NodeAllTransactions* current = L.head;
+	NodeAllTransactions* current = Stack.head;
 	while (current != nullptr) {
 		cout << "Transaction ID: " + current->data.TransactionID << endl;
 		cout << "Account Number: " + current->data.AccNum << endl;
@@ -145,9 +145,9 @@ void displayStackAllTransactions(const StackAllTransactions& L) {
 
 
 
-StackAllTransactions CopyStackAllTransactions(const StackAllTransactions& L) {
+StackAllTransactions CopyStackAllTransactions(const StackAllTransactions& Stack) {
 	StackAllTransactions newStackAllTransactions = createStackAllTransactions();
-	NodeAllTransactions* current = L.head;
+	NodeAllTransactions* current = Stack.head;
 	NodeAllTransactions* tail = nullptr;
 
 	while (current) {
@@ -169,7 +169,7 @@ StackAllTransactions CopyStackAllTransactions(const StackAllTransactions& L) {
 		}
 		current = current->next;
 	}
-	newStackAllTransactions.size = L.size;
+	newStackAllTransactions.size = Stack.size;
 	return newStackAllTransactions;
 }
 
