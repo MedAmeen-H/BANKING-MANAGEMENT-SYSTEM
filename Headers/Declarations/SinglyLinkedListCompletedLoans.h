@@ -2,10 +2,10 @@
 #ifndef SINGLYLINKEDLISTCOMPLETEDLOANS_H
 #define SINGLYLINKEDLISTCOMPLETEDLOANS_H
 #include<iostream>
-#include "structures.h"
+#include "StructLoan.h"
 using namespace std;
 struct NodeCompletedLoan {
-	StructLoan data;
+	Loan data;
 	NodeCompletedLoan* next;
 };
 
@@ -15,3 +15,4 @@ struct ListCompletedLoans {
 };
 
 #endif
+
