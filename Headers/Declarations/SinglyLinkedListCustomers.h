@@ -2,10 +2,10 @@
 #ifndef SINGLYLINKEDListCustomers_H
 #define SINGLYLINKEDListCustomers_H
 #include<iostream>
-#include "structures.h"
+#include "StructCustomer.h"
 using namespace std;
 struct NodeCustomer {
-	StructCustomer data;
+	Customer data;
 	NodeCustomer* next;
 };
 
@@ -15,3 +15,4 @@ struct ListCustomers {
 };
 
 #endif
+
