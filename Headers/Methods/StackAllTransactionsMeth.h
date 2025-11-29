@@ -1,18 +1,19 @@
 #pragma once
-#ifndef STACKALLTRANSACTIONS_METH_H
-#define STACKALLTRANSACTIONS_METH_H
+#ifndef STACKALLTRANSACTIONSMETH_H
+#define STACKALLTRANSACTIONSMETH_H
 #include "StackAllTransactions.h"
 NodeAllTransactions* createNodeAllTransactions(Transaction value);
 void destroyNodeAllTransactions(NodeAllTransactions* node);
-StackAllTransactions createStackAllTransactions();
-void destroyStackAllTransactions(StackAllTransactions* L);
-bool StackAllTransactionsisEmpty(const StackAllTransactions& L);
-bool StackAllTransactionsisFull(const StackAllTransactions& L);
-int StackAllTransactionsSize(const StackAllTransactions& L);
-int InsertAllTransaction(StackAllTransactions* L, Transaction e, int pos);
-int removeAllTransactionAt(StackAllTransactions* L, int pos);
-Transaction getAllTransaction(const StackAllTransactions& L, int pos);
-void displayStackAllTransactions(const StackAllTransactions& L);
-StackAllTransactions CopyStackAllTransactions(const StackAllTransactions& L);
+StackAllTransactions* createStackAllTransactions();
+void destroyStackAllTransactions(StackAllTransactions* Stack);
+bool StackAllTransactionsisEmpty(const StackAllTransactions& Stack);
+bool StackAllTransactionsisFull(const StackAllTransactions& Stack);
+int StackAllTransactionsSize(const StackAllTransactions& Stack);
+int PushTransaction(StackAllTransactions* Stack, Transaction e, int pos);
+int PopTransactionAt(StackAllTransactions* Stack, int pos);
+int TopTransaction(const StackAllTransactions& Stack);
+void displayStackAllTransactions(const StackAllTransactions& Stack);
+StackAllTransactions* CopyStackAllTransactions(const StackAllTransactions& Stack);
 bool CompareStackAllTransactions(const StackAllTransactions& L1, const StackAllTransactions& L2);
 #endif
+
