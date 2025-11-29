@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SINGLYLINKEDListCustomers_H
-#define SINGLYLINKEDListCustomers_H
+#ifndef SINGLYLINKEDLISTCUSTOMERS_H
+#define SINGLYLINKEDLISTCUSTOMERS_H
 #include<iostream>
 #include "StructCustomer.h"
 using namespace std;
@@ -15,4 +15,5 @@ struct ListCustomers {
 };
 
 #endif
+
 
