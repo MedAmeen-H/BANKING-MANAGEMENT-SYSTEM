@@ -1,6 +1,8 @@
 #pragma once
 #ifndef STRUCTCUSTOMER_H
-#define STRUCTCUSTOMER_H 
+#define STRUCTCUSTOMER_H
+#include "DoublyLinkedListLoansMeth.h"
+#include "AccTransactionsStackMeth.h"
 #include <string>
 using namespace std;
 struct Customer {
@@ -12,6 +14,8 @@ struct Customer {
     string date;
     string status;
     float balance;
+    ListLoan Loans;
+    AccTransactionsStack Transactions;
 };
 
 #endif
