@@ -4,7 +4,7 @@ using namespace std;
 #include <string>
 
 
-NodeCustomer* createNodeCustomer(StructCustomer value) {
+NodeCustomer* createNodeCustomer(Customer value) {
 	NodeCustomer* node = new (nothrow) NodeCustomer{ value, nullptr };
 	if (!node) {
 		cerr << "\nMemory allocation failed for node\n";
@@ -34,7 +34,7 @@ bool ListCustomersisFull(const ListCustomers& L) {
 }
 
 
-int InsertCustomer(ListCustomers* L, StructCustomer e, int pos) {
+int InsertCustomer(ListCustomers* L, Customer e, int pos) {
 	if (!L) return 0;
 	if (pos < 1 || pos > L->size + 1) {
 		cerr << "\nInvalid position";
@@ -93,8 +93,8 @@ int removeCustomerAt(ListCustomers* L, int pos) {
 
 
 
-StructCustomer getCustomer(const ListCustomers& L, int pos) {
-	StructCustomer s = {};
+Customer getCustomer(const ListCustomers& L, int pos) {
+	Customer s = {};
 	if (ListCustomersisEmpty(L)) {
 		cerr << "\nListCustomers is empty\n";
 		return s;
@@ -190,4 +190,5 @@ bool CompareListCustomers(const ListCustomers& L1, const ListCustomers& L2) {
 	}
 	return true;
 }
+
 
