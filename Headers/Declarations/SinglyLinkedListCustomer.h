@@ -1,7 +1,6 @@
 #pragma once
 #ifndef SINGLYLINKEDLISTCUSTOMER_H
 #define SINGLYLINKEDLISTCUSTOMER_H
-#include <list>
 #include "StructCustomer.h"
 using namespace std;
 Struct NodeCustomer{
@@ -13,6 +12,7 @@ Struct ListCustomers{
   int Size;
 };
 #endif
+
 
 
 
