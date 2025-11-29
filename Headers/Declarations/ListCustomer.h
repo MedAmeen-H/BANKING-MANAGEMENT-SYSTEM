@@ -1,8 +1,9 @@
 #pragma once
-#ifndef LISTCUSTOMER_H
-#define LISTCUSTOMER_H
+#ifndef SINGLYLINKEDLISTCUSTOMER_H
+#define SINGLYLINKEDLISTCUSTOMER_H
 #include <list>
 #include "StructCustomer.h"
 using namespace std;
 
 #endif
+
