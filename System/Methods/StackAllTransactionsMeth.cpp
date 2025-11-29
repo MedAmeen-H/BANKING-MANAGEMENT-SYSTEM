@@ -1,10 +1,10 @@
-#include "SinglyLinkedListAllTransactionsMeth.h"
+#include "StackAllTransactionsMeth.h"
 #include <iostream>
 using namespace std;
 #include <string>
 
 
-NodeAllTransactions* createNodeAllTransactions(StructTransaction value) {
+NodeAllTransactions* createNodeAllTransactions(Transaction value) {
 	NodeAllTransactions* node = new (nothrow) NodeAllTransactions{ value, nullptr };
 	if (!node) {
 		cerr << "\nMemory allocation failed for node\n";
@@ -18,15 +18,15 @@ void destroyNodeAllTransactions(NodeAllTransactions* node) {
 }
 
 
-bool ListAllTransactionsisEmpty(const ListAllTransactions& L) {
+bool StackAllTransactionsisEmpty(const StackAllTransactions& L) {
 	return L.size == 0;
 }
 
-int ListAllTransactionsSize(const ListAllTransactions& L) {
+int StackAllTransactionsSize(const StackAllTransactions& L) {
 	return L.size;
 }
 
-bool ListAllTransactionsisFull(const ListAllTransactions& L) {
+bool StackAllTransactionsisFull(const StackAllTransactions& L) {
 	NodeAllTransactions* test = new (nothrow) NodeAllTransactions;
 	if (!test) return true;
 	delete test;
@@ -34,7 +34,7 @@ bool ListAllTransactionsisFull(const ListAllTransactions& L) {
 }
 
 
-int InsertAllTransaction(ListAllTransactions* L, StructTransaction e, int pos) {
+int InsertAllTransaction(StackAllTransactions* L, Transaction e, int pos) {
 	if (!L) return 0;
 	if (pos < 1 || pos > L->size + 1) {
 		cerr << "\nInvalid position";
@@ -62,9 +62,9 @@ int InsertAllTransaction(ListAllTransactions* L, StructTransaction e, int pos) {
 }
 
 
-int removeAllTransactionAt(ListAllTransactions* L, int pos) {
-	if (!L || ListAllTransactionsisEmpty(*L)) {
-		cerr << "\nList is empty";
+int removeAllTransactionAt(StackAllTransactions* L, int pos) {
+	if (!L || StackAllTransactionsIsEmpty(*L)) {
+		cerr << "\nStack is empty";
 		return 0;
 	}
 	if (pos < 1 || pos > L->size) {
@@ -87,10 +87,10 @@ int removeAllTransactionAt(ListAllTransactions* L, int pos) {
 	L->size--;
 	return 1;
 }
-StructTransaction getAllTransaction(const ListAllTransactions& L, int pos) {
-	StructTransaction s = {};
-	if (ListAllTransactionsisEmpty(L)) {
-		cerr << "\nListAllTransactions is empty\n";
+Transaction getAllTransaction(const StackAllTransactions& L, int pos) {
+	Transaction s = {};
+	if (StackAllTransactionsIsEmpty(L)) {
+		cerr << "\nStackAllTransactions is empty\n";
 		return s;
 	}
 	if (pos < 1 || pos > L.size) {
@@ -108,12 +108,12 @@ StructTransaction getAllTransaction(const ListAllTransactions& L, int pos) {
 }
 
 
-ListAllTransactions createListAllTransactions() {
-	return ListAllTransactions{ nullptr, 0 };
+StackAllTransactions createStackAllTransactions() {
+	return StackAllTransactions{ nullptr, 0 };
 }
 
 
-void destroyListAllTransactions(ListAllTransactions* L) {
+void destroyStackAllTransactions(StackAllTransactions* L) {
 	if (!L) return;
 	NodeAllTransactions* current = L->head;
 	while (current) {
@@ -126,8 +126,8 @@ void destroyListAllTransactions(ListAllTransactions* L) {
 }
 
 
-void displayListAllTransactions(const ListAllTransactions& L) {
-	if (ListAllTransactionsisEmpty(L)) {
+void displayStackAllTransactions(const StackAllTransactions& L) {
+	if (StackAllTransactionsIsEmpty(L)) {
 		cout << "List is empty\n";
 		return;
 	}
@@ -145,8 +145,8 @@ void displayListAllTransactions(const ListAllTransactions& L) {
 
 
 
-ListAllTransactions CopyListAllTransactions(const ListAllTransactions& L) {
-	ListAllTransactions newListAllTransactions = createListAllTransactions();
+StackAllTransactions CopyStackAllTransactions(const StackAllTransactions& L) {
+	StackAllTransactions newStackAllTransactions = createStackAllTransactions();
 	NodeAllTransactions* current = L.head;
 	NodeAllTransactions* tail = nullptr;
 
@@ -155,12 +155,12 @@ ListAllTransactions CopyListAllTransactions(const ListAllTransactions& L) {
 		if (!n) {
 
 			cerr << "\nMemory allocation failed while copying\n";
-			destroyListAllTransactions(&newListAllTransactions);
-			return createListAllTransactions();
+			destroysStackAllTransactions(&newStackAllTransactions);
+			return createStackAllTransactions();
 		}
 
-		if (!newListAllTransactions.head) {
-			newListAllTransactions.head = n;
+		if (!newStackAllTransactions.head) {
+			newStackAllTransactions.head = n;
 			tail = n;
 		}
 		else {
@@ -169,13 +169,13 @@ ListAllTransactions CopyListAllTransactions(const ListAllTransactions& L) {
 		}
 		current = current->next;
 	}
-	newListAllTransactions.size = L.size;
-	return newListAllTransactions;
+	newStackAllTransactions.size = L.size;
+	return newStackAllTransactions;
 }
 
 
 
-bool CompareListAllTransactions(const ListAllTransactions& L1, const ListAllTransactions& L2) {
+bool CompareStackAllTransactions(const StackAllTransactions& L1, const StackAllTransactions& L2) {
 	if (L1.size != L2.size) return false;
 
 	NodeAllTransactions* p1 = L1.head;
