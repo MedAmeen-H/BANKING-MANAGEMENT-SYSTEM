@@ -7,12 +7,13 @@ using namespace std;
 Struct NodeCustomer{
   Customer data;
   NodeCustomer* next;
-}
+};
 Struct ListCustomers{
   NodeCustomer* head;
   int Size;
-}
+};
 #endif
+
 
 
 
