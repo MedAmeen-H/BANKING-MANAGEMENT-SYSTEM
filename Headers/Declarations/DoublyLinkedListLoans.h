@@ -1,9 +1,9 @@
 #pragma once
 #ifndef DOUBLYLINKEDLIST_H
 #define DOUBLYLINKEDLIST_H
-#include "Structures.h"
+#include "StructLoan.h"
 struct NodeLoan {
-	StructLoan data;
+	Loan data;
 	NodeLoan* next;
 	NodeLoan* prev;
 };
@@ -13,3 +13,4 @@ struct ListLoan {
 	int size;
 };
 #endif
+
