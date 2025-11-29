@@ -22,5 +22,6 @@ ListCustomers CopyListCustomers(const ListCustomers& L);
 bool CompareListCustomers(const ListCustomers& L1, const ListCustomers& L2);
 
 
-#endif // SINGLYLINKEDListCustomersMETH_H
+#endif 
+
 
