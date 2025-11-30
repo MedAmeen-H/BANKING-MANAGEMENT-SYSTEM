@@ -1,19 +1,17 @@
-#pragma once
-#ifndef STACKALLTRANSACTIONSMETH_H
-#define STACKALLTRANSACTIONSMETH_H
-#include "StackAllTransactions.h"
-NodeAllTransactions* createNodeAllTransactions(Transaction value);
-void destroyNodeAllTransactions(NodeAllTransactions* node);
-StackAllTransactions* createStackAllTransactions();
-void destroyStackAllTransactions(StackAllTransactions* Stack);
-bool StackAllTransactionsisEmpty(const StackAllTransactions& Stack);
-bool StackAllTransactionsisFull(const StackAllTransactions& Stack);
-int StackAllTransactionsSize(const StackAllTransactions& Stack);
-int PushTransaction(StackAllTransactions* Stack, Transaction e, int pos);
-int PopTransactionAt(StackAllTransactions* Stack, int pos);
-int TopTransaction(const StackAllTransactions& Stack);
-void displayStackAllTransactions(const StackAllTransactions& Stack);
-StackAllTransactions* CopyStackAllTransactions(const StackAllTransactions& Stack);
-bool CompareStackAllTransactions(const StackAllTransactions& L1, const StackAllTransactions& L2);
+#ifndef DAILYLOGMETH_H
+#define DAILYLOGMETH_H
+#include "DailyLog.h"
+aDailyTransaction* CreateADailyTransaction(Transaction value);
+void DestroyATransaction(aDailyTransaction* node);
+DailyLogStack CreateDailyLogStack();
+void DestroyDailyLogStack(DailyLogStack* Stack);
+bool DailyLogStackEmpty(const DailyLogStack& Stack);
+bool bool DailyLogStackFull(const DailyLogStack& Stack);
+int DailyLogSize(const DailyLogStack& Stack);
+int PushTransaction(DailyLogStack* Stack, Transaction e);
+Transaction PopTransaction(DailyLogStack* Stack;
+Transaction TopTransaction(const DailyLogStack& Stack);
+void DisplayDailyLog(const DailyLogStack& Stack);
+DailyLogStack CopyDailyLog(const DailyLogStack& Stack);
+bool CompareDailyLogs(const DailyLogStack& L1, const DailyLogStack& L2);
 #endif
-
