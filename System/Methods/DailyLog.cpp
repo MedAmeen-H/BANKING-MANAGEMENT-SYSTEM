@@ -3,7 +3,7 @@
 using namespace std;
 
 
-DailyTransaction* CreateADailyTransaction(Transaction value) {
+aDailyTransaction* CreateADailyTransaction(Transaction value) {
 	aDailyTransaction* node = new (nothrow) aDailyTransaction{ value, nullptr };
 	if (!node) {
 		cerr << "\nMemory allocation failed for node\n";
@@ -155,5 +155,6 @@ bool CompareDailyLogs(const DailyLogStack& L1, const DailyLogStack& L2) {
 	}
 	return true;
 }
+
 
 
