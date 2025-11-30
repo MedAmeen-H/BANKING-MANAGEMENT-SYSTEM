@@ -1,5 +1,5 @@
-#ifndef STACKALLTRANSACTIONS_H
-#define STACKALLTRANSACTIONS_H
+#ifndef DAILYLOG_H
+#define DAILYLOG_H
 #include<iostream>
 #include "StructTransaction.h"
 using namespace std;
@@ -13,4 +13,5 @@ struct DailyLogStack {
 };
 
 #endif
+
 
