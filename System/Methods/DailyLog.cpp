@@ -1,11 +1,10 @@
-#include "StackAllTransactionsMeth.h"
+#include "DailyLogMeth.h"
 #include <iostream>
 using namespace std;
-#include <string>
 
 
-NodeAllTransactions* createNodeAllTransactions(Transaction value) {
-	NodeAllTransactions* node = new (nothrow) NodeAllTransactions{ value, nullptr };
+aDailyTransaction* CreateADailyTransaction(Transaction value) {
+	aDailyTransaction* node = new (nothrow) aDailyTransaction{ value, nullptr };
 	if (!node) {
 		cerr << "\nMemory allocation failed for node\n";
 	}
@@ -13,125 +12,84 @@ NodeAllTransactions* createNodeAllTransactions(Transaction value) {
 }
 
 
-void destroyNodeAllTransactions(NodeAllTransactions* node) {
+void DestroyATransaction(aDailyTransaction* node) {
 	delete node;
 }
 
 
-bool StackAllTransactionsisEmpty(const StackAllTransactions& Stack) {
-	return Stack.size == 0;
+bool DailyLogStackEmpty(const DailyLogStack& Stack) {
+	return Stack.Top == nullptr;
 }
 
-int StackAllTransactionsSize(const StackAllTransactions& Stack) {
-	return Stack.size;
+int DailyLogSize(const DailyLogStack& Stack) {
+	int size = 0;
+	aDailyTransaction* n = Stack.Top;
+	while (n != nullptr) {
+		size++;
+		n = n->next;
+	}
+	return size;
 }
 
-bool StackAllTransactionsisFull(const StackAllTransactions& Stack) {
-	NodeAllTransactions* test = new (nothrow) NodeAllTransactions;
+bool DailyLogStackFull(const DailyLogStack& Stack) {
+	aDailyTransaction* test = new (nothrow) aDailyTransaction;
 	if (!test) return true;
 	delete test;
 	return false;
 }
 
 
-int PushTransaction(StackAllTransactions* Stack, Transaction e, int pos) {
+int PushTransaction(DailyLogStack* Stack, Transaction e) {
 	if (!Stack) return 0;
-	if (pos < 1 || pos > Stack->size + 1) {
-		cerr << "\nInvalid position";
-		return 0;
-	}
-	NodeAllTransactions* n = createNodeAllTransactions(e);
-	if (!n) return 0;
-	if (pos == 1) {
-		n->next = Stack->head;
-		Stack->head = n;
-	}
-	else {
-		NodeAllTransactions* prev = nullptr;
-		NodeAllTransactions* current = Stack->head;
-		for (int i = 1; i < pos; i++) {
-			prev = current;
-			current = current->next;
-		}
-		prev->next = n;
-		n->next = current;
-	}
-
-	Stack->size++;
+	if (DailyLogStackFull(*Stack)) return 0;
+	aDailyTransaction* n = CreateADailyTransaction(e);
+	n->next = Stack->Top;
+	Stack->Top = n;
 	return 1;
 }
 
 
-int PopTransactionAt(StackAllTransactions* Stack, int pos) {
-	if (!Stack || StackAllTransactionsIsEmpty(*Stack)) {
+Transaction PopTransaction(DailyLogStack* Stack) {
+	if (!Stack || DailyLogStackEmpty(*Stack)) {
 		cerr << "\nStack is empty";
-		return 0;
+		return {};
 	}
-	if (pos < 1 || pos > Stack->size) {
-		cerr << "\nInvalid position";
-		return 0;
-	}
-	NodeAllTransactions* prev = nullptr;
-	NodeAllTransactions* current = Stack->head;
-	if (pos == 1) {
-		Stack->head = current->next;
+	aDailyTransaction* TOP = Stack->Top;
+	Transaction e = TOP->data;
+	Stack->Top = Stack->Top->next;
+	DestroyATransaction(TOP);
+	return (e);
+}
+
+DailyLogStack CreateDailyLogStack() {
+	DailyLogStack* S = new (nothrow) DailyLogStack;
+	if (!S) {
+		cout << "\nError: unable to allocate memory";
 	}
 	else {
-		for (int i = 1; i < pos; i++) {
-			prev = current;
-			current = current->next;
-		}
-		prev->next = current->next;
+		S->Top = nullptr;
 	}
-	destroyNodeAllTransactions(current);
-	Stack->size--;
-	return 1;
-}
-Transaction getAllTransaction(const StackAllTransactions& Stack, int pos) {
-	Transaction s = {};
-	if (StackAllTransactionsIsEmpty(Stack)) {
-		cerr << "\nStackAllTransactions is empty\n";
-		return s;
-	}
-	if (pos < 1 || pos > Stack.size) {
-		cerr << "\nInvalid position\n";
-		return s;
-	}
-
-
-	NodeAllTransactions* current = Stack.head;
-	for (int i = 1; i < pos; i++) {
-		current = current->next;
-	}
-
-	return current->data;
+	return *S;
 }
 
 
-StackAllTransactions createStackAllTransactions() {
-	return StackAllTransactions{ nullptr, 0 };
-}
-
-
-void destroyStackAllTransactions(StackAllTransactions* Stack) {
-	if (!Stack) return;
-	NodeAllTransactions* current = Stack->head;
-	while (current) {
-		NodeAllTransactions* temp = current;
-		current = current->next;
-		destroyNodeAllTransactions(temp);
+void DestroyDailyLogStack(DailyLogStack* Stack) {
+	aDailyTransaction* n = Stack->Top;
+	while (n != nullptr) {
+		Stack->Top = n->next; 
+		DestroyATransaction(n); 
+		n = Stack->Top; 
 	}
-	Stack->head = nullptr;
-	Stack->size = 0;
+	delete Stack;
 }
 
 
-void displayStackAllTransactions(const StackAllTransactions& Stack) {
-	if (StackAllTransactionsIsEmpty(Stack)) {
+void DisplayDailyLog(const DailyLogStack& Stack) {
+	if (DailyLogStackEmpty(Stack)) {
 		cout << "List is empty\n";
 		return;
 	}
-	NodeAllTransactions* current = Stack.head;
+	aDailyTransaction* current = Stack.Top;
 	while (current != nullptr) {
 		cout << "Transaction ID: " + current->data.TransactionID << endl;
 		cout << "Account Number: " + current->data.AccNum << endl;
@@ -145,22 +103,22 @@ void displayStackAllTransactions(const StackAllTransactions& Stack) {
 
 
 
-StackAllTransactions CopyStackAllTransactions(const StackAllTransactions& Stack) {
-	StackAllTransactions newStackAllTransactions = createStackAllTransactions();
-	NodeAllTransactions* current = Stack.head;
-	NodeAllTransactions* tail = nullptr;
+DailyLogStack CopyDailyLog(const DailyLogStack& Stack) {
+	DailyLogStack newStackAllTransactions = CreateDailyLogStack();
+	aDailyTransaction* current = Stack.Top;
+	aDailyTransaction* tail = nullptr;
 
 	while (current) {
-		NodeAllTransactions* n = createNodeAllTransactions(current->data);
+		aDailyTransaction* n = CreateADailyTransaction(current->data);
 		if (!n) {
 
 			cerr << "\nMemory allocation failed while copying\n";
-			destroysStackAllTransactions(&newStackAllTransactions);
-			return createStackAllTransactions();
+			DestroyDailyLogStack(&newStackAllTransactions);
+			return CreateDailyLogStack();
 		}
 
-		if (!newStackAllTransactions.head) {
-			newStackAllTransactions.head = n;
+		if (!newStackAllTransactions.Top) {
+			newStackAllTransactions.Top = n;
 			tail = n;
 		}
 		else {
@@ -169,19 +127,17 @@ StackAllTransactions CopyStackAllTransactions(const StackAllTransactions& Stack)
 		}
 		current = current->next;
 	}
-	newStackAllTransactions.size = Stack.size;
 	return newStackAllTransactions;
 }
 
 
 
-bool CompareStackAllTransactions(const StackAllTransactions& L1, const StackAllTransactions& L2) {
-	if (L1.size != L2.size) return false;
+bool CompareDailyLogs(const DailyLogStack& L1, const DailyLogStack& L2) {
+	if (DailyLogSize(L1) != DailyLogSize(L2)) return false;
+	aDailyTransaction* p1 = L1.Top;
+	aDailyTransaction* p2 = L2.Top;
 
-	NodeAllTransactions* p1 = L1.head;
-	NodeAllTransactions* p2 = L2.head;
-
-	while (p1) {
+	while (p1!=nullptr) {
 		if (p1->data.TransactionID != p2->data.TransactionID)return false;
 		p1 = p1->next;
 		p2 = p2->next;
