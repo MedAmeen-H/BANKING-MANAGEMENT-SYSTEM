@@ -61,6 +61,17 @@ Transaction PopTransaction(DailyLogStack* Stack) {
 	return (e);
 }
 
+Transaction TopTransaction(const DailyLogStack& Stack) {
+	Transaction e = {};
+	if (DailyLogStackEmpty(Stack)) {
+		cout << "\nStack is empty";
+	}
+	else {
+		e = Stack.Top->data;
+	}
+	return e;
+}
+
 DailyLogStack CreateDailyLogStack() {
 	DailyLogStack* S = new (nothrow) DailyLogStack;
 	if (!S) {
@@ -144,3 +155,4 @@ bool CompareDailyLogs(const DailyLogStack& L1, const DailyLogStack& L2) {
 	}
 	return true;
 }
+
