@@ -1,16 +1,16 @@
-#pragma once
 #ifndef STACKALLTRANSACTIONS_H
 #define STACKALLTRANSACTIONS_H
 #include<iostream>
 #include "StructTransaction.h"
 using namespace std;
-struct NodeAllTransactions {
+struct aDailyTransaction {
 	Transaction data;
-	NodeAllTransactions* next;
+	aDailyTransaction* next;
 };
 
-struct StackAllTransactions {
-	NodeAllTransactions* Top;
+struct DailyLogStack {
+	aDailyTransaction* Top;
 };
 
 #endif
+
