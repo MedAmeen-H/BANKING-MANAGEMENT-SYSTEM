@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ACCTRANSACTIONSSTACK_H
 #define ACCTRANSACTIONSSTACK_H
 #include "StructTransaction.h"
