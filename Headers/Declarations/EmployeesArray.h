@@ -6,8 +6,9 @@
 using namespace std;
 constexpr int Max=100;
 struct EmployeesList {
-    StructEmployee elements[Max];
+    Employee elements[Max];
     int size;
 };
 
 #endif // EMPLOYEESARRAY_H
+
