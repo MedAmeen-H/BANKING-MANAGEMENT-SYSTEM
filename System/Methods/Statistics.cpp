@@ -128,3 +128,28 @@ void EmployeesPerBranch(StructEmployee* employees, int size,
             branchCounts[b]++;
     }
 }
+StructEmployee EarliestHiredEmployee(StructEmployee* Employees, int size)
+{
+    if (size == 0) throw runtime_error("Employee list is empty");
+
+    StructEmployee earliest = Employees[0];
+
+    for (int i = 1; i < size; i++) {
+        if (Employees[i].HireDate < earliest.HireDate) {
+            earliest = Employees[i];
+        }
+    }
+    return earliest;
+}
+StructEmployee MostRecentHiredEmployee(StructEmployee* Employees, int size)
+{
+    if (size == 0) cerr<<"Employee list is empty";
+    StructEmployee mostRecent = Employees[0];
+    for (int i = 1; i < size; i++) {
+        if (Employees[i].HireDate > mostRecent.HireDate) {
+            mostRecent = Employees[i];
+        }
+    }
+    return mostRecent;
+}
+
