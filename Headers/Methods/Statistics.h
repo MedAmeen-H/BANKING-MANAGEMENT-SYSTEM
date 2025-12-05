@@ -18,7 +18,8 @@ StructCustomer* CustomerWithMostLoans(StructCustomer** Customers, int size);
 StructCustomer* CustomerWithHighestBalance(StructCustomer** Customers, int size);
 StructCustomer* CustomerWithLowestBalance(StructCustomer** Customers, int size);
 int Totalployees(StructEmployee* Employees, int size);
-void EmployeesPerBranch(StructEmployee* Employees, int size,
-int* branchCounts, int branchLimit);
-
+void EmployeesPerBranch(StructEmployee* Employees, int size,int* branchCounts, int branchLimit);
+StructEmployee EarliestHiredEmployee(StructEmployee* Employees, int size);
+StructEmployee MostRecentHiredEmployee(StructEmployee* Employees, int size);
 #endif
+
